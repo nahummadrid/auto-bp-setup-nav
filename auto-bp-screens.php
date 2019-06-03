@@ -1,5 +1,4 @@
 <?php 
-
 /*/////////////////////////////////////////////*/
 /* Setup Nav */
 /*/////////////////////////////////////////////*/
@@ -88,18 +87,15 @@ function mdlr_count_cpt_post( $type ) {
 
 
 
-function mb_author_post() {
+function mb_author_post($posttype) {
   //get the public post types //////////////////////////////////////
-  add_action( 'bp_template_content', function() { mdlr_get_bp_loop(''.$post_type->name.''); } );
+  add_action( 'bp_template_content', function() { mdlr_get_bp_loop($posttype); } );
   bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'members/single/plugins' ) );
 }
 
 
-function mb_author_post_likes($type = ''){ 
+function mb_author_post_likes($posttype){ 
   //add_action( 'bp_template_content', 'mb_show_product_likes' );
-  add_action( 'bp_template_content', function() { mdlr_get_bp_loop_likes('product'); } );
+  add_action( 'bp_template_content', function() { mdlr_get_bp_loop_likes($posttype); } );
   bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'members/single/plugins' ) );
 }
-
-
-
